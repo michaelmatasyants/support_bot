@@ -16,6 +16,8 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
 
 BOT_TOKEN = env.str('BOT_TOKEN')
 
+GOOGLE_PROJECT_ID = env.str('GOOGLE_PROJECT_ID')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
