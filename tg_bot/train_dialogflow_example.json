@@ -1,0 +1,16 @@
+{
+    "intent name 1": {
+        "questions": [
+            "Question 1",
+            "Question 2"
+        ],
+        "answer": "Answer"
+    },
+    "intent name 2": {
+        "questions": [
+            "Question 1",
+            "Question 2"
+        ],
+        "answer": "Answer"
+    }
+}

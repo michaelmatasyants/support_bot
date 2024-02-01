@@ -3,7 +3,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from django.conf import settings
 
-from bot.dialogflow import detect_intent_texts
+from .dialogflow import detect_intent_texts
 
 router = Router()
 

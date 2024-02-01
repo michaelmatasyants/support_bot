@@ -8,7 +8,10 @@ env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = env.str(
+    'SECRET_KEY',
+    'django-insecure-8$(7s8u6f5(@b0a$l^hna&(idfxnbgcsyrog&iq!1@!ixucxdk'
+)
 
 DEBUG = env.bool('DEBUG', False)
 
@@ -25,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bot',
+    'tg_bot',
 ]
 
 MIDDLEWARE = [

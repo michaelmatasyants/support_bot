@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 
 from google.api_core import exceptions
-from google.api_core.exceptions import InvalidArgument
 from google.cloud.dialogflow import (
     AgentsClient,
     Intent,
@@ -62,7 +61,3 @@ def create_intents(project_id: str) -> None:
             print(f"Intent with display name '{intent_name}' already exists")
             continue
         print(f"Intent created: {response}")
-
-
-if __name__ == "__main__":
-    create_intents("newagent-vuav")

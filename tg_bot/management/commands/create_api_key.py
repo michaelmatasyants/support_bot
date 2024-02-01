@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from bot.create_api_key import main
+from tg_bot.create_api_key import main
 
 
 class Command(BaseCommand):
