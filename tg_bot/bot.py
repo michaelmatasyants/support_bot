@@ -7,7 +7,7 @@ from . import handlers
 
 
 async def main():
-    bot = Bot(settings.BOT_TOKEN)
+    bot = Bot(settings.TG_BOT_TOKEN)
     dp = Dispatcher()
 
     dp.include_routers(handlers.router)

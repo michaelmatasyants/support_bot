@@ -28,6 +28,7 @@
   ```console
   python3 manage.py create_api_key
   ```
+
 - If you want to train your own dialog flow by creating new intent:
   - Open `train_dialogflow.json`
   - Edit it like is shown in `train_dialogflow_example.json`.
@@ -39,5 +40,19 @@
   ```console
   python3 manage.py train
   ```
-  There is no need of retraining the dialog flow every time you run the telegram bot. This step must be repeted only when you want to update script (questions and answers) for your telegrma bot.
+  There is no need of retraining the dialog flow every time you run the telegram bot. This step must be repeted only when you want to update script (questions and answers) for your telegram bot.
 
+- Create telegram bot using `@BotFather` bot in telegram and save it's token in an `.env` file under the name `TG_BOT_TOKEN`, as shown in `.env.example`.
+
+- Run your telegram bot:
+  ```
+  python3 manage.py run_tg_bot
+  ```
+
+## How to run vk bot
+- [Create your own vk](https://vk.com/) group and save the token in an `.env` file under the name `VK_GROUP_TOKEN`, as shown in `.env.example`.
+- Allow your group to send messages ins settings of the group.
+- Run your vk bot
+  ```console
+  python3 manage.py run_vk_bot
+  ```

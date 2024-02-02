@@ -4,3 +4,4 @@ environs[django]==9.5.0
 google-cloud-api-keys==0.5.5
 google-cloud-core==2.4.1
 google-cloud-dialogflow==2.27.0
+vk-api==11.9.9
