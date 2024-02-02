@@ -10,11 +10,13 @@ router = Router()
 
 @router.message(Command('start'))
 async def process_start(message: Message):
+    """Reply to Start command"""
     await message.answer(text='Hello!')
 
 
 @router.message()
-async def process_echo(message: Message):
+async def process_dialog_flow(message: Message):
+    """Replying to a message using the dialog flow"""
     if isinstance(message.text, str):
         text_message = detect_intent_texts(
             project_id=settings.GOOGLE_PROJECT_ID,
