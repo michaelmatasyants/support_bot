@@ -4,30 +4,38 @@ import json
 from pathlib import Path
 
 from google.api_core import exceptions
-from google.cloud.dialogflow import (
-    AgentsClient,
-    Intent,
-    IntentsClient,
-    QueryInput,
-    SessionsClient,
-    TextInput,
-)
+from google.cloud.dialogflow import (AgentsClient, Intent, IntentsClient,
+                                     QueryInput, SessionsClient, TextInput)
 
 
-def detect_intent_texts(project_id: str, session_id: str, text: str) -> str:
+def detect_intent_texts(project_id: str,
+                        session_id: str,
+                        text: str,
+                        fallback: bool) -> str:
     """Returns the result of detect intent with text.
     Using the same `session_id` between requests allows continuation
-    of the conversation."""
+    of the conversation.
+
+    If there are no scripts in dialog flow for recived message and
+        - fallback = True returns "Try one more time" text
+        - fallback = False returns "We've forwarded your request"
+    """
 
     session_client = SessionsClient()
     session_path = session_client.session_path(project_id, session_id)
     text_input = TextInput(text=text, language_code="ru-RU")
     query_input = QueryInput(text=text_input)
-
     response = session_client.detect_intent(
         request={"session": session_path, "query_input": query_input}
     )
-    return response.query_result.fulfillment_text
+
+    if fallback:
+        return response.query_result.fulfillment_text
+    else:
+        if not response.query_result.intent.is_fallback:
+            return response.query_result.fulfillment_text
+        else:
+            return "Ваш запрос передан оператору службы поддержки"
 
 
 def create_intents(project_id: str) -> None:

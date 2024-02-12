@@ -21,11 +21,13 @@ def process_dialog_flow(event, vk_api):
     text_message = detect_intent_texts(
         project_id=settings.GOOGLE_PROJECT_ID,
         session_id=event.user_id,
-        text=event.text
+        text=event.text,
+        fallback=False
     )
     vk_api.messages.send(user_id=event.user_id,
                          message=text_message,
                          random_id=random.randint(1, 1000))
+
 
 
 def main():

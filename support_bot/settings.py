@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'support_tg_bot.urls'
+ROOT_URLCONF = 'support_bot.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'support_tg_bot.wsgi.application'
+WSGI_APPLICATION = 'support_bot.wsgi.application'
 
 
 DATABASES = {

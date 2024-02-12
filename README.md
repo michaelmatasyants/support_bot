@@ -1,4 +1,4 @@
-# Support Telegram bot
+# Support bot
 
 ## How to install
 - Add Secret key for django
