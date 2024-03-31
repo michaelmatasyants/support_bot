@@ -29,7 +29,6 @@ def process_dialog_flow(event, vk_api):
                          random_id=random.randint(1, 1000))
 
 
-
 def main():
     """Main function"""
     vk_session = vk.VkApi(token=settings.VK_GROUP_TOKEN)

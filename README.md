@@ -51,7 +51,7 @@
 
 ## How to run vk bot
 - [Create your own vk](https://vk.com/) group and save the token in an `.env` file under the name `VK_GROUP_TOKEN`, as shown in `.env.example`.
-- Allow your group to send messages ins settings of the group.
+- Allow your group to send messages in settings of the group.
 - Run your vk bot
   ```console
   python3 manage.py run_vk_bot
