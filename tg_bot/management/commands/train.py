@@ -1,11 +1,10 @@
 from django.core.management.base import BaseCommand
 
-from tg_bot.create_api_key import main
+from tg_bot.dialogflow import create_intents
 
 
 class Command(BaseCommand):
-    help = """Create DIALOGFLOW API key and save with path
-              of GOOGLE_APP_CREDENTIALS in '.env' file"""
+    help = """Trains the dialog flow using the train_dialogflow.json file"""
 
     def handle(self, *args, **options):
-        main()
+        create_intents()

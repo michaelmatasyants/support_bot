@@ -4,3 +4,5 @@ venv
 **.mypy_cache
 **__pycache__
 db.sqlite3
+google-cloud-cli-linux-x86_64.tar.gz
+google-cloud-sdk

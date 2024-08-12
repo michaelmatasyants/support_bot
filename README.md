@@ -56,3 +56,42 @@
   ```console
   python3 manage.py run_vk_bot
   ```
+
+
+## Install google cloud
+
+Download
+```sh
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+```
+
+Extract:
+```sh
+tar -xf google-cloud-cli-linux-x86_64.tar.gz
+```
+
+Add gcloud CLI to the PATH:
+```sh
+./google-cloud-sdk/install.sh
+```
+
+
+Initialize gcloud:
+```sh
+./google-cloud-sdk/bin/gcloud init
+```
+
+Login in your google account:
+```sh
+gcloud auth application-default login
+```
+
+
+Remove file:
+```sh
+rm google-cloud-cli-linux-x86_64.tar.gz
+```
+
+```
+gcloud auth application-default login
+```

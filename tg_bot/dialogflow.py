@@ -2,10 +2,28 @@
 
 import json
 from pathlib import Path
+from django.conf import settings
 
 from google.api_core import exceptions
 from google.cloud.dialogflow import (AgentsClient, Intent, IntentsClient,
                                      QueryInput, SessionsClient, TextInput)
+
+
+def create_fallback_intent(message_texts: str = "Fallback text message"):
+    """Create a fallback intent with custom messages."""
+    intents_client = IntentsClient()
+    parent = AgentsClient.agent_path(settings.GOOGLE_PROJECT_ID)
+    message = Intent.Message(text=Intent.Message.Text(text=[message_texts]))
+
+    intent = Intent(
+        display_name="Fallback intent",
+        messages=[message],
+        is_fallback=True
+    )
+
+    response = intents_client.create_intent(
+        request={"parent": parent, "intent": intent}
+    )
 
 
 def detect_intent_texts(project_id: str,
@@ -22,13 +40,16 @@ def detect_intent_texts(project_id: str,
     """
 
     session_client = SessionsClient()
-    session_path = session_client.session_path(project_id, session_id)
+    session_cl_path = session_client.session_path(project_id, session_id)
     text_input = TextInput(text=text, language_code="ru-RU")
     query_input = QueryInput(text=text_input)
     response = session_client.detect_intent(
-        request={"session": session_path, "query_input": query_input}
+        request={
+            "session": session_cl_path,
+            "query_input": query_input
+        }
     )
-
+    print(response)
     if fallback:
         return response.query_result.fulfillment_text
     else:
@@ -38,17 +59,18 @@ def detect_intent_texts(project_id: str,
             return "Ваш запрос передан оператору службы поддержки"
 
 
-def create_intents(project_id: str) -> None:
+def create_intents() -> None:
     """Creates an intents with adding training script from json file
     named train_dialog_flow.json located in bot app"""
     intents_client = IntentsClient()
-    parent = AgentsClient.agent_path(project_id)
+    parent = AgentsClient.agent_path(settings.GOOGLE_PROJECT_ID)
+    create_fallback_intent()
 
-    with open(Path("bot", "train_dialogflow.json"), "r") as f:
+    with open(Path("tg_bot", "train_dialogflow.json"), "r") as f:
         training_scripts = json.load(f)
     for intent_name, qa in training_scripts.items():
         training_phrases: list[str] = qa.get("questions")
-        reply_text: list[str] = qa.get("answer")
+        reply_text: str = qa.get("answer")
         df_training_phrases = [
             Intent.TrainingPhrase(parts=[
                 Intent.TrainingPhrase.Part(text=phrase)
