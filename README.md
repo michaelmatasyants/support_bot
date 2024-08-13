@@ -1,8 +1,14 @@
 # Support bot
 
 # Deployed bots
-- [Telegram bot](https://t.me/Sup66_Bot)
-- [VK group](https://vk.com/club221130674). Send message for testing.
+
+Send message for testing:
+- [Telegram bot](https://t.me/Sup66_Bot)<br>
+TG bot usage examples:<br>
+![TG bot usage examples](tg.png)
+- [VK group](https://vk.com/club221130674)<br>
+VK bot usage examples:<br>
+![VK bot usage examples](vk.png)
 
 
 ## How to install
