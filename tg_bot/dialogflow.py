@@ -9,7 +9,7 @@ from google.cloud.dialogflow import (AgentsClient, Intent, IntentsClient,
                                      QueryInput, SessionsClient, TextInput)
 
 
-def create_fallback_intent(message_texts: str = "Fallback text message"):
+def create_fallback_intent(message_texts: str):
     """Create a fallback intent with custom messages."""
     intents_client = IntentsClient()
     parent = AgentsClient.agent_path(settings.GOOGLE_PROJECT_ID)
@@ -21,9 +21,7 @@ def create_fallback_intent(message_texts: str = "Fallback text message"):
         is_fallback=True
     )
 
-    response = intents_client.create_intent(
-        request={"parent": parent, "intent": intent}
-    )
+    intents_client.create_intent(request={"parent": parent, "intent": intent})
 
 
 def detect_intent_texts(project_id: str,
@@ -49,7 +47,6 @@ def detect_intent_texts(project_id: str,
             "query_input": query_input
         }
     )
-    print(response)
     if fallback:
         return response.query_result.fulfillment_text
     else:
@@ -64,7 +61,8 @@ def create_intents() -> None:
     named train_dialog_flow.json located in bot app"""
     intents_client = IntentsClient()
     parent = AgentsClient.agent_path(settings.GOOGLE_PROJECT_ID)
-    create_fallback_intent()
+    create_fallback_intent(message_texts="Пожалуйста перефразируйте ваш \
+                           вопрос, чтобы мне было легче вас понять")
 
     with open(Path("tg_bot", "train_dialogflow.json"), "r") as f:
         training_scripts = json.load(f)

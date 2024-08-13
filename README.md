@@ -1,7 +1,7 @@
 # Support bot
 
 ## How to install
-- Add Secret key for django
+- Generate Secret key for django and add it in `.env`
 - Create virtula environment and install all dependencies:
   ```console
   python3 -m venv venv
@@ -90,8 +90,4 @@ gcloud auth application-default login
 Remove file:
 ```sh
 rm google-cloud-cli-linux-x86_64.tar.gz
-```
-
-```
-gcloud auth application-default login
 ```
