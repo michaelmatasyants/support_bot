@@ -1,5 +1,10 @@
 # Support bot
 
+# Deployed bots
+- [Telegram bot](https://t.me/Sup66_Bot)
+- [VK group](https://vk.com/club221130674). Send message for testing.
+
+
 ## How to install
 - Generate Secret key for django and add it in `.env`
 - Create virtula environment and install all dependencies:
